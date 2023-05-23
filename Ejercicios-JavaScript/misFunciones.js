@@ -94,3 +94,44 @@ function calcularDiv(){
     num2= Number(document.getElementsByName("div_num2")[0].value);
     document.getElementsByName("div_total")[0].value=num1/num2;
 }
+
+
+let dibujarCirculoCuadrado = () => {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let xMax= canvas.width;
+    let yMax= canvas.height;
+    ctx.fillstyle = "#333";
+    //dibujar margen
+    let margen = 15;
+    ctx.fillRect(0+margen,yMax-40-margen,40,40);
+    ctx.arc(xMax/2,yMax/2,100,0,2*Math.PI);
+    ctx.stroke(); //dibujo de los bordes del circulo
+    ctx.fill(); // pinto el circulo por dentro
+}
+
+let limpiarCanvas = () => {
+    let canvas = document.getElementById("myCanvas");
+    canvas.width = canvas.width;
+}
+
+var bandera;
+
+let dibujar = () => {
+    let canvas =document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+
+    let posx = event.clientX;
+    let posy = event.clientY;
+    console.log(posx,posy);
+
+    canvas.onmousedown = function(){bandera=true};
+    canvas.onmouseup = function (){bandera=false};
+
+    if(bandera){
+    ctx.fillRect(posx,posy,5,5);
+    ctx.fill;
+    }
+}
